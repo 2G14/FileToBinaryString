@@ -7,4 +7,8 @@ proc readBinary(filename: string): string =
   while not s.atEnd:
     result.add(s.readUint8().int.toBin(8))
 
-echo readBinary(commandLineParams()[0])
+if paramCount() < 1:
+  quit("filename param not found.")
+let filename = commandLineParams()[0]
+let binarystring = readBinary(filename)
+echo binarystring
